@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Nosh.Models.Snack>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Nashville Software School's Vending Options</h1>
+
+<p>
+    <a asp-action="Create">Add a snack</a>
+</p>
+
+        @foreach (var item in Model)
+        {
+            string fileName = $"{ item.snackType.imageURL }";
+            @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.snackName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.snackPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.snackCalories)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vendingMachineId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>*@
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src=@fileName alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.snackName)</h5>
+                    <p class="card-text">$@Html.DisplayFor(modelItem => item.snackPrice)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.snackCalories) calories</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        }
+   

@@ -1,0 +1,52 @@
+﻿@model Nosh.Models.Snack
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Snack</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="snackName" class="control-label"></label>
+                <input asp-for="snackName" class="form-control" />
+                <span asp-validation-for="snackName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="snackPrice" class="control-label"></label>
+                <input asp-for="snackPrice" class="form-control" />
+                <span asp-validation-for="snackPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="snackCalories" class="control-label"></label>
+                <input asp-for="snackCalories" class="form-control" />
+                <span asp-validation-for="snackCalories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vendingMachineId" class="control-label"></label>
+                <input asp-for="vendingMachineId" class="form-control" />
+                <span asp-validation-for="vendingMachineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="snackTypeId" class="control-label"></label>
+                <select asp-for="snackTypeId" class ="form-control" asp-items="ViewBag.snackTypeId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
