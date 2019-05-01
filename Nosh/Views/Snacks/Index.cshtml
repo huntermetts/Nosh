@@ -34,14 +34,13 @@
                 </td>
             </tr>*@
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 10rem; height:14rem;">
+                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.snackName)</h5>
+
                 <img class="card-img-top" src=@fileName alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.snackName)</h5>
-                    <p class="card-text">$@Html.DisplayFor(modelItem => item.snackPrice)</p>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.snackCalories) calories</p>
-                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.id">Details</a>
+                    <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.id">Details</a>
                 </div>
             </div>
-        }
+         }
    
