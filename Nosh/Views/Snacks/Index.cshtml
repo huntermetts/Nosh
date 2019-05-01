@@ -40,7 +40,7 @@
                     <h5 class="card-title"> @Html.DisplayFor(modelItem => item.snackName)</h5>
                     <p class="card-text">$@Html.DisplayFor(modelItem => item.snackPrice)</p>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.snackCalories) calories</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.id">Details</a>
                 </div>
             </div>
         }

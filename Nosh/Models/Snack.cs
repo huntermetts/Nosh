@@ -35,9 +35,9 @@ namespace Nosh.Models
 
         public virtual ICollection<VendingMachineSnack> VendingMachineSnack { get; set; }
 
+        public VendingMachine vendingMachine { get; set; }
+
         public SnackType snackType { get; set; }
-
-
     }
 }
     
