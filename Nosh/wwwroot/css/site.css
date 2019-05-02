@@ -34,10 +34,19 @@ body{
     margin-left: 10px;
 }
 
+.landingImage {
+    margin-top: -570px;
+    margin-left: 400px;
+}
+
 .logoHeader {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
     margin-left: -70px;
+}
+
+.contentLanding{
+    margin-top:-75px;
 }
 
 .navBarStyles {
