@@ -3,6 +3,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h4 class="textLanding">A new way to manage <br /> Nashville Software School's vending machine.</h4>
 </div>
+
+<div class="landingButtons">
+    @*<button type="button" class="btn btn-dark">Dark</button>*@
+    <button type="button" class="btn btn-dark registerHome">
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </button>
+    <br />
+
+    <p class="orButton">or</p>
+
+    <button type="button" class="btn btn-dark bottomButton">
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </button>
+</div>
+

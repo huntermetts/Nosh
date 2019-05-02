@@ -9,11 +9,35 @@ body{
     font-weight:300;
 }
 
+.textLanding {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin-right: 550px;
+    line-height: 45px;
+    margin-top: 170px;
+}
+
+.registerHome{
+    margin-top:15px;
+    margin-bottom:16px;
+}
+
+.landingButtons{
+    margin-left:225px;
+}
+
+.orButton {
+    margin-left: 55px;
+}
+
+.bottomButton {
+    margin-left: 10px;
+}
 
 .logoHeader {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
-    margin-left:-70px;
+    margin-left: -70px;
 }
 
 .navBarStyles {
