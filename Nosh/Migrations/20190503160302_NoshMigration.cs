@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Nosh.Migrations
 {
-    public partial class fifth_migration : Migration
+    public partial class NoshMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -206,6 +206,12 @@ namespace Nosh.Migrations
                         principalTable: "SnackType",
                         principalColumn: "SnackTypeId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Snack_VendingMachine_vendingMachineId",
+                        column: x => x.vendingMachineId,
+                        principalTable: "VendingMachine",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -266,10 +272,10 @@ namespace Nosh.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "firstName", "isVendor", "lastName" },
                 values: new object[,]
                 {
-                    { "a8a940e5-5dcf-42dc-b68a-485f6b914841", 0, "93020749-2386-4988-a763-8f722abbf8dd", "User", "hmetts@gmail.com", true, false, null, "HMETTS@GMAIL.COM", "HMETTS@GMAIL.COM", "AQAAAAEAACcQAAAAEEU/0MYJMWTLzpF4gqEOGJLjzXPdbI6mIjSwA8onRorwmviMYlgnWJA957htyDL+cQ==", null, false, "99c36618-257e-4055-917b-b47bb1ca3cc9", false, "hmetts@gmail.com", "Hunter", false, "Metts" },
-                    { "ee2d76f0-9beb-48c8-a54a-40fc06098c4a", 0, "161c752b-9b72-4c97-8e85-7a9d8f4e37c9", "User", "jrosas@gmail.com", true, false, null, "JROSAS@GMAIL.COM", "JROSAS@GMAIL.COM", "AQAAAAEAACcQAAAAEBZf0k+3IhPxcVO4JIVksRCSMH1ENPmBBbEWRYNYdyTacmbKbn8Q2qUYMw3amNIKvA==", null, false, "f5d00216-ff0c-43be-9353-9252fe64a3d1", false, "jrosas@gmail.com", "Jordan", false, "Rosas" },
-                    { "4c95101a-02f4-4789-a018-4bef0d02c376", 0, "1107393d-3bbc-45ec-9c30-1f04f30de3fa", "User", "acarter@gmail.com", true, false, null, "ACARTER@GMAIL.COM", "ACARTER@GMAIL.COM", "AQAAAAEAACcQAAAAEFitclZes1d9/8OTmIsN+3+ktJA08S0SMbuDFF+SSEQbT9etL4fk7LUjkhK8Fbfn9A==", null, false, "226766a3-4e64-44a0-8118-94edd76b08ce", false, "acarter@gmail.com", "Asia", false, "Carter" },
-                    { "742d3388-1d67-429c-82ac-e90d30646d9f", 0, "d9ce4cb0-427c-454d-8ea6-30c5d86d1869", "User", "sbrader@gmail.com", true, false, null, "SBRADER@GMAIL.COM", "SBRADER@GMAIL.COM", "AQAAAAEAACcQAAAAECKvtyh+8aPoOY39mcZMwftc4MxA/veapLmVvvSGicWIcTFGvPS6hDRDnmykiTaDog==", null, false, "95afeab1-dc2c-4aba-a43f-a7946296335e", false, "sbrader@gmail.com", "Steven", true, "Brader" }
+                    { "fed45c47-4a73-4aa0-9291-a82870675f7a", 0, "8f2a9578-064c-42a3-94cf-13e9411ae340", "User", "hmetts@gmail.com", true, false, null, "HMETTS@GMAIL.COM", "HMETTS@GMAIL.COM", "AQAAAAEAACcQAAAAEAEq62pwGmvWLbTPde+4nlk54ZLFKG3mLsZfdQEf6vyOdx8nJEanyEG3nPYsZY7FYA==", null, false, "b69436cf-a0f8-4639-8b33-e6a2ab4075df", false, "hmetts@gmail.com", "Hunter", false, "Metts" },
+                    { "540c9a17-cd14-41d2-91fa-936ed5863fbc", 0, "20de5860-b274-44d2-ab03-4c9c45479584", "User", "jrosas@gmail.com", true, false, null, "JROSAS@GMAIL.COM", "JROSAS@GMAIL.COM", "AQAAAAEAACcQAAAAENjKxDNmbEpbG3eXIXBzymRLRJC9TEEZBjOenMv2KERLlO3eKNbVFSoBoNcA9NhFbg==", null, false, "eaab7094-3681-4551-842e-33e956bf9881", false, "jrosas@gmail.com", "Jordan", false, "Rosas" },
+                    { "ddcc038f-bbce-4b41-86b8-cac01ed620d2", 0, "db35e45a-608a-4539-b702-cf9b88876184", "User", "acarter@gmail.com", true, false, null, "ACARTER@GMAIL.COM", "ACARTER@GMAIL.COM", "AQAAAAEAACcQAAAAEPT2hVNMDTwIT4zgNtD+Z5mTjg5Wulo1jjjYFtqX4ykrCYgjgC6+gEbOIXHqUMi9TA==", null, false, "330ffd08-97c4-4c5b-822f-c39229616f65", false, "acarter@gmail.com", "Asia", false, "Carter" },
+                    { "dc304167-0949-460d-88ea-927d8feed82f", 0, "b637f69c-2699-4f49-870c-53ef717d0071", "User", "sbrader@gmail.com", true, false, null, "SBRADER@GMAIL.COM", "SBRADER@GMAIL.COM", "AQAAAAEAACcQAAAAEGwmVbL1shDLHKfXQCun4IAtSIVdkIWvt/3ELliWU2NwuMcqKFQv5JGfD9MQYCP35Q==", null, false, "fcb2bb3a-bf23-40a3-b979-6cb9e28ca124", false, "sbrader@gmail.com", "Steven", true, "Brader" }
                 });
 
             migrationBuilder.InsertData(
@@ -296,15 +302,15 @@ namespace Nosh.Migrations
                 columns: new[] { "id", "snackCalories", "snackName", "snackPrice", "snackTypeId", "vendingMachineId" },
                 values: new object[,]
                 {
-                    { 2, 140, "Coke", 1.0, 1, 1 },
-                    { 4, 240, "Iced Coffee", 3.0, 1, 1 },
-                    { 7, 150, "Dr. Pepper", 1.0, 1, 1 },
                     { 9, 168, "Red Bull", 2.5, 1, 2 },
-                    { 3, 160, "Lays Original", 0.75, 2, 1 },
-                    { 5, 160, "Lays BBQ", 0.75, 2, 1 },
-                    { 8, 150, "Doritos Salsa Verde", 1.0, 2, 1 },
                     { 1, 210, "REECE's Peanut Butter Cups", 1.0, 3, 1 },
-                    { 6, 215, "Snickers", 1.0, 3, 1 }
+                    { 2, 140, "Coke", 1.0, 1, 1 },
+                    { 3, 160, "Lays Original", 0.75, 2, 1 },
+                    { 4, 240, "Iced Coffee", 3.0, 1, 1 },
+                    { 5, 160, "Lays BBQ", 0.75, 2, 1 },
+                    { 6, 215, "Snickers", 1.0, 3, 1 },
+                    { 7, 150, "Dr. Pepper", 1.0, 1, 1 },
+                    { 8, 150, "Doritos Salsa Verde", 1.0, 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -312,11 +318,11 @@ namespace Nosh.Migrations
                 columns: new[] { "id", "snackId", "userId", "userId1" },
                 values: new object[,]
                 {
+                    { 3, 9, 2, null },
+                    { 4, 1, 3, null },
                     { 2, 7, 1, null },
                     { 5, 7, 3, null },
-                    { 3, 9, 2, null },
-                    { 1, 8, 1, null },
-                    { 4, 1, 3, null }
+                    { 1, 8, 1, null }
                 });
 
             migrationBuilder.InsertData(
@@ -324,15 +330,15 @@ namespace Nosh.Migrations
                 columns: new[] { "id", "snackId", "vendingMachineId" },
                 values: new object[,]
                 {
-                    { 2, 2, 1 },
-                    { 4, 4, 1 },
-                    { 7, 7, 1 },
                     { 9, 9, 2 },
-                    { 3, 3, 1 },
-                    { 5, 5, 1 },
-                    { 8, 8, 1 },
                     { 1, 1, 1 },
-                    { 6, 6, 1 }
+                    { 2, 2, 1 },
+                    { 3, 3, 1 },
+                    { 4, 4, 1 },
+                    { 5, 5, 1 },
+                    { 6, 6, 1 },
+                    { 7, 7, 1 },
+                    { 8, 8, 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -378,6 +384,11 @@ namespace Nosh.Migrations
                 name: "IX_Snack_snackTypeId",
                 table: "Snack",
                 column: "snackTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Snack_vendingMachineId",
+                table: "Snack",
+                column: "vendingMachineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserSnack_snackId",
@@ -433,10 +444,10 @@ namespace Nosh.Migrations
                 name: "Snack");
 
             migrationBuilder.DropTable(
-                name: "VendingMachine");
+                name: "SnackType");
 
             migrationBuilder.DropTable(
-                name: "SnackType");
+                name: "VendingMachine");
         }
     }
 }
