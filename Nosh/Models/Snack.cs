@@ -25,7 +25,7 @@ namespace Nosh.Models
         public int snackCalories { get; set; }
 
 
-        public int vendingMachineId { get; set; }
+        public ICollection<VendingMachine> vendingMachineId { get; set; }
 
         [Required]
         [Display(Name = "Snack Category")]
