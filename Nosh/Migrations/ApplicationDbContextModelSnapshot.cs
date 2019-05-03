@@ -212,6 +212,8 @@ namespace Nosh.Migrations
 
                     b.HasIndex("snackTypeId");
 
+                    b.HasIndex("vendingMachineId");
+
                     b.ToTable("Snack");
 
                     b.HasData(
@@ -511,17 +513,17 @@ namespace Nosh.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a8a940e5-5dcf-42dc-b68a-485f6b914841",
+                            Id = "fed45c47-4a73-4aa0-9291-a82870675f7a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "93020749-2386-4988-a763-8f722abbf8dd",
+                            ConcurrencyStamp = "8f2a9578-064c-42a3-94cf-13e9411ae340",
                             Email = "hmetts@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "HMETTS@GMAIL.COM",
                             NormalizedUserName = "HMETTS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEU/0MYJMWTLzpF4gqEOGJLjzXPdbI6mIjSwA8onRorwmviMYlgnWJA957htyDL+cQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAEq62pwGmvWLbTPde+4nlk54ZLFKG3mLsZfdQEf6vyOdx8nJEanyEG3nPYsZY7FYA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "99c36618-257e-4055-917b-b47bb1ca3cc9",
+                            SecurityStamp = "b69436cf-a0f8-4639-8b33-e6a2ab4075df",
                             TwoFactorEnabled = false,
                             UserName = "hmetts@gmail.com",
                             firstName = "Hunter",
@@ -530,17 +532,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "ee2d76f0-9beb-48c8-a54a-40fc06098c4a",
+                            Id = "540c9a17-cd14-41d2-91fa-936ed5863fbc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "161c752b-9b72-4c97-8e85-7a9d8f4e37c9",
+                            ConcurrencyStamp = "20de5860-b274-44d2-ab03-4c9c45479584",
                             Email = "jrosas@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JROSAS@GMAIL.COM",
                             NormalizedUserName = "JROSAS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBZf0k+3IhPxcVO4JIVksRCSMH1ENPmBBbEWRYNYdyTacmbKbn8Q2qUYMw3amNIKvA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENjKxDNmbEpbG3eXIXBzymRLRJC9TEEZBjOenMv2KERLlO3eKNbVFSoBoNcA9NhFbg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f5d00216-ff0c-43be-9353-9252fe64a3d1",
+                            SecurityStamp = "eaab7094-3681-4551-842e-33e956bf9881",
                             TwoFactorEnabled = false,
                             UserName = "jrosas@gmail.com",
                             firstName = "Jordan",
@@ -549,17 +551,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "4c95101a-02f4-4789-a018-4bef0d02c376",
+                            Id = "ddcc038f-bbce-4b41-86b8-cac01ed620d2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1107393d-3bbc-45ec-9c30-1f04f30de3fa",
+                            ConcurrencyStamp = "db35e45a-608a-4539-b702-cf9b88876184",
                             Email = "acarter@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACARTER@GMAIL.COM",
                             NormalizedUserName = "ACARTER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFitclZes1d9/8OTmIsN+3+ktJA08S0SMbuDFF+SSEQbT9etL4fk7LUjkhK8Fbfn9A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPT2hVNMDTwIT4zgNtD+Z5mTjg5Wulo1jjjYFtqX4ykrCYgjgC6+gEbOIXHqUMi9TA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "226766a3-4e64-44a0-8118-94edd76b08ce",
+                            SecurityStamp = "330ffd08-97c4-4c5b-822f-c39229616f65",
                             TwoFactorEnabled = false,
                             UserName = "acarter@gmail.com",
                             firstName = "Asia",
@@ -568,17 +570,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "742d3388-1d67-429c-82ac-e90d30646d9f",
+                            Id = "dc304167-0949-460d-88ea-927d8feed82f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d9ce4cb0-427c-454d-8ea6-30c5d86d1869",
+                            ConcurrencyStamp = "b637f69c-2699-4f49-870c-53ef717d0071",
                             Email = "sbrader@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SBRADER@GMAIL.COM",
                             NormalizedUserName = "SBRADER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECKvtyh+8aPoOY39mcZMwftc4MxA/veapLmVvvSGicWIcTFGvPS6hDRDnmykiTaDog==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGwmVbL1shDLHKfXQCun4IAtSIVdkIWvt/3ELliWU2NwuMcqKFQv5JGfD9MQYCP35Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "95afeab1-dc2c-4aba-a43f-a7946296335e",
+                            SecurityStamp = "fcb2bb3a-bf23-40a3-b979-6cb9e28ca124",
                             TwoFactorEnabled = false,
                             UserName = "sbrader@gmail.com",
                             firstName = "Steven",
@@ -634,9 +636,14 @@ namespace Nosh.Migrations
 
             modelBuilder.Entity("Nosh.Models.Snack", b =>
                 {
-                    b.HasOne("Nosh.Models.SnackType")
+                    b.HasOne("Nosh.Models.SnackType", "snackType")
                         .WithMany("Snacks")
                         .HasForeignKey("snackTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Nosh.Models.VendingMachine", "vendingMachine")
+                        .WithMany()
+                        .HasForeignKey("vendingMachineId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

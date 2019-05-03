@@ -1,8 +1,63 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="contentLanding">
+        <div class="text-center">
+            <h4 class="textLanding">Welcome @User.Identity.Name!<br />The choice is yours!</h4>
+
+        </div>
+
+        <div class="landingButtons">
+            @*<button type="button" class="btn btn-dark">Dark</button>*@
+            <button type="button" class="btn btn-dark registerHome">
+                <a class="nav-link text-light" asp-area="" asp-controller="Snacks" asp-action="Index">Snacks</a>
+            </button>
+            <br />
+
+            <p class="orButton">or</p>
+
+            <button type="button" class="btn btn-dark vendingButton">
+                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Vending Machines</a>
+            </button>
+        </div>
+
+
+        <div class="landingImage reecesPic">
+            <img src="~/images/reeces.png" alt="reeces" height="900" width="900">
+        </div>
+    </div>
+        }
+        else
+        {
+        <div class="contentLanding">
+            <div class="text-center">
+                <h4 class="textLanding">A new way to manage <br /> Nashville Software School's vending machine.</h4>
+            </div>
+
+            <div class="landingButtons">
+                @*<button type="button" class="btn btn-dark">Dark</button>*@
+                <button type="button" class="btn btn-dark registerHome">
+                    <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </button>
+                <br />
+
+                <p class="orButton">or</p>
+
+                <button type="button" class="btn btn-dark bottomButton">
+                    <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </button>
+            </div>
+
+            <div class="landingImage">
+                <img src="~/images/reeces.png" alt="reeces" height="900" width="900">
+            </div>
+        </div>
+        }
+

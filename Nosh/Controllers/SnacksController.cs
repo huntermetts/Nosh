@@ -24,6 +24,8 @@ namespace Nosh.Controllers
         {
             return View(await _context.Snack
                 .Include(s => s.snackType)
+                .Include(s => s.VendingMachineSnack)
+                .Include(s => s.vendingMachine)
                 .ToListAsync());
         }
 
@@ -37,6 +39,8 @@ namespace Nosh.Controllers
 
             var snack = await _context.Snack
                 .Include(s => s.snackType)
+                .Include(s => s.VendingMachineSnack)
+                .Include(s => s.vendingMachine)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (snack == null)
             {
