@@ -5,14 +5,18 @@
 }
 
 
+<form asp-controller="Movies" asp-action="Index">
+        <input type="submit" class="btn btn-dark allSnacks" value="All Snacks" />
+    
+    <p class="searchContainer">
+        <input class="searchInput" type="text" placeholder="  Search through snacks at your company..." name="SearchString">
+        <input type="submit" class="btn btn-dark" value="Go" />
+    </p>
+    
+</form>
+
 <h1 class="headerSnacks"><strong>Nashville Software School's</strong> vending options:</h1>
 
-<form asp-controller="Movies" asp-action="Index">
-    <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Filter" />
-    </p>
-</form>
 
 <div class="cardHolder">
     

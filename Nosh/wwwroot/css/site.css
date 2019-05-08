@@ -113,6 +113,25 @@ body{
     margin-left: 400px;
 }
 
+.searchInput {
+    border-radius: 7px;
+    border: 0;
+    padding: 5px;
+    width: 40%;
+    margin-right: 20px;
+}
+
+.allSnacks{
+    margin-left:10px;
+   margin-top:30px
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -40px
+}
+
 .logoHeader {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
