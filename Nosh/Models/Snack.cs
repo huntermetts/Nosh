@@ -11,33 +11,39 @@ namespace Nosh.Models
     {
         public int id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a valid snack name")]
         [StringLength(50)]
+        [Display(Name = "Snack Name ")]
         public string snackName { get; set; }
 
-        [Required]
-        //[DataType(DataType.Currency)]
-        //[Column(TypeName = "money")]
+        [Required(ErrorMessage = "Please enter a valid snack price")]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Snack Price")]
         public double snackPrice { get; set; }
 
-        [Required]
-        [MaxLength(4)]
+        [Required(ErrorMessage = "Please enter a valid calorie amount")]
+
+        [Display(Name = "Snack Calories")]
         public int snackCalories { get; set; }
 
 
-        public int vendingMachineId { get; set; }
+        public virtual ICollection<SnackType> SnackType { get; set; }
 
         [Required]
         [Display(Name = "Snack Category")]
-        public int snackTypeId { get; set; }
+        public int SnackTypeId { get; set; }
 
         public virtual ICollection<UserSnack> UserSnack { get; set; }
 
-        public virtual ICollection<VendingMachineSnack> VendingMachineSnack { get; set; }
+        //public virtual ICollection<VendingMachineSnack> VendingMachineSnack { get; set; }
 
-        public VendingMachine vendingMachine { get; set; }
+        [Required]
+        [Display(Name = "Vending Machine")]
+        public int vendingMachineId { get; set; }
 
         public SnackType snackType { get; set; }
+
+        public VendingMachine vendingMachine { get; set; }
     }
 }
     

@@ -20,13 +20,29 @@ namespace Nosh.Controllers
         }
 
         // GET: Snacks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Snack
-                .Include(s => s.snackType)
-                .Include(s => s.VendingMachineSnack)
-                .Include(s => s.vendingMachine)
-                .ToListAsync());
+            var snacks = from s in _context.Snack
+                         .Include(s => s.snackType)
+                         .Include(s => s.vendingMachine)
+                         select s
+                         ;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                snacks = snacks.Where(s => s.snackName.Contains(searchString));
+
+
+                return View(await snacks.ToListAsync());
+            }
+            else
+            {
+                return View(await _context.Snack
+                    .Include(s => s.snackType)
+                    .Include(s => s.vendingMachine)
+
+                    .ToListAsync());
+            }
         }
 
         // GET: Snacks/Details/5
@@ -39,8 +55,8 @@ namespace Nosh.Controllers
 
             var snack = await _context.Snack
                 .Include(s => s.snackType)
-                .Include(s => s.VendingMachineSnack)
                 .Include(s => s.vendingMachine)
+                
                 .FirstOrDefaultAsync(m => m.id == id);
             if (snack == null)
             {
@@ -53,6 +69,8 @@ namespace Nosh.Controllers
         // GET: Snacks/Create
         public IActionResult Create()
         {
+            ViewData["SnackTypeId"] = new SelectList(_context.SnackType, "SnackTypeId", "snackTypeName");
+            ViewData["VendingMachineId"] = new SelectList(_context.VendingMachine, "id", "vendingMachineName");
             return View();
         }
 
@@ -61,15 +79,20 @@ namespace Nosh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,snackName,snackPrice,snackCalories,vendingMachineId,snackTypeId")] Snack snack)
+        public async Task<IActionResult> Create([Bind("id,snackName,snackPrice,snackCalories,vendingMachineId,SnackTypeId")] Snack snack)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(snack);
+                //_context.Add(CreateSnack.VendingMachineSnacks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SnackTypeId"] = new SelectList(_context.SnackType, "SnackTypeId", "snackTypeName");
+            ViewData["VendingMachineId"] = new SelectList(_context.VendingMachine, "id", "vendingMachineName");
+
             return View(snack);
+
         }
 
         // GET: Snacks/Edit/5
@@ -85,6 +108,8 @@ namespace Nosh.Controllers
             {
                 return NotFound();
             }
+            ViewData["SnackTypeId"] = new SelectList(_context.SnackType, "SnackTypeId", "snackTypeName");
+            ViewData["VendingMachineId"] = new SelectList(_context.VendingMachine, "id", "vendingMachineName");
             return View(snack);
         }
 
@@ -93,7 +118,7 @@ namespace Nosh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,snackName,snackPrice,snackCalories,vendingMachineId,snackTypeId")] Snack snack)
+        public async Task<IActionResult> Edit(int id, [Bind("id,snackName,snackPrice,snackCalories,vendingMachineId,SnackTypeId")] Snack snack)
         {
             if (id != snack.id)
             {
@@ -120,6 +145,8 @@ namespace Nosh.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SnackTypeId"] = new SelectList(_context.SnackType, "SnackTypeId", "snackTypeName");
+            ViewData["VendingMachineId"] = new SelectList(_context.VendingMachine, "id", "vendingMachineName");
             return View(snack);
         }
 
@@ -132,13 +159,18 @@ namespace Nosh.Controllers
             }
 
             var snack = await _context.Snack
-                .FirstOrDefaultAsync(m => m.id == id);
+                .Include(s => s.snackType)
+                .Include(s => s.vendingMachine)
+                .FirstOrDefaultAsync(m => m.id == id)
+                ;
             if (snack == null)
             {
                 return NotFound();
             }
-
+            ViewData["SnackTypeId"] = new SelectList(_context.SnackType, "SnackTypeId", "snackTypeName");
+            ViewData["VendingMachineId"] = new SelectList(_context.VendingMachine, "id", "vendingMachineName");
             return View(snack);
+            
         }
 
         // POST: Snacks/Delete/5

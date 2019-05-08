@@ -15,7 +15,5 @@ namespace Nosh.Models
 
         public string imageURL { get; set; }
 
-        public virtual ICollection<Snack> Snacks { get; set; }
-
     }
 }

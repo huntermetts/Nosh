@@ -10,8 +10,8 @@ using Nosh.Data;
 namespace Nosh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190503160302_NoshMigration")]
-    partial class NoshMigration
+    [Migration("20190506183305_NoshMigration2")]
+    partial class NoshMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -197,8 +197,9 @@ namespace Nosh.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("snackCalories")
-                        .HasMaxLength(4);
+                    b.Property<int>("SnackTypeId");
+
+                    b.Property<int>("snackCalories");
 
                     b.Property<string>("snackName")
                         .IsRequired()
@@ -206,13 +207,11 @@ namespace Nosh.Migrations
 
                     b.Property<double>("snackPrice");
 
-                    b.Property<int>("snackTypeId");
-
                     b.Property<int>("vendingMachineId");
 
                     b.HasKey("id");
 
-                    b.HasIndex("snackTypeId");
+                    b.HasIndex("SnackTypeId");
 
                     b.HasIndex("vendingMachineId");
 
@@ -222,82 +221,82 @@ namespace Nosh.Migrations
                         new
                         {
                             id = 1,
+                            SnackTypeId = 3,
                             snackCalories = 210,
-                            snackName = "REECE's Peanut Butter Cups",
+                            snackName = "Reese's Peanut Butter Cups",
                             snackPrice = 1.0,
-                            snackTypeId = 3,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 2,
+                            SnackTypeId = 1,
                             snackCalories = 140,
                             snackName = "Coke",
                             snackPrice = 1.0,
-                            snackTypeId = 1,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 3,
+                            SnackTypeId = 2,
                             snackCalories = 160,
                             snackName = "Lays Original",
                             snackPrice = 0.75,
-                            snackTypeId = 2,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 4,
+                            SnackTypeId = 1,
                             snackCalories = 240,
                             snackName = "Iced Coffee",
                             snackPrice = 3.0,
-                            snackTypeId = 1,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 5,
+                            SnackTypeId = 2,
                             snackCalories = 160,
                             snackName = "Lays BBQ",
                             snackPrice = 0.75,
-                            snackTypeId = 2,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 6,
+                            SnackTypeId = 3,
                             snackCalories = 215,
                             snackName = "Snickers",
                             snackPrice = 1.0,
-                            snackTypeId = 3,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 7,
+                            SnackTypeId = 1,
                             snackCalories = 150,
                             snackName = "Dr. Pepper",
                             snackPrice = 1.0,
-                            snackTypeId = 1,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 8,
+                            SnackTypeId = 2,
                             snackCalories = 150,
                             snackName = "Doritos Salsa Verde",
                             snackPrice = 1.0,
-                            snackTypeId = 2,
                             vendingMachineId = 1
                         },
                         new
                         {
                             id = 9,
+                            SnackTypeId = 1,
                             snackCalories = 168,
                             snackName = "Red Bull",
                             snackPrice = 2.5,
-                            snackTypeId = 1,
                             vendingMachineId = 2
                         });
                 });
@@ -308,11 +307,15 @@ namespace Nosh.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Snackid");
+
                     b.Property<string>("imageURL");
 
                     b.Property<string>("snackTypeName");
 
                     b.HasKey("SnackTypeId");
+
+                    b.HasIndex("Snackid");
 
                     b.ToTable("SnackType");
 
@@ -320,19 +323,19 @@ namespace Nosh.Migrations
                         new
                         {
                             SnackTypeId = 1,
-                            imageURL = "~/images/milk-bottle.png",
+                            imageURL = "/images/milk-bottle.png",
                             snackTypeName = "Drink"
                         },
                         new
                         {
                             SnackTypeId = 2,
-                            imageURL = "~/images/snack.png",
+                            imageURL = "/images/snack.png",
                             snackTypeName = "Chip"
                         },
                         new
                         {
                             SnackTypeId = 3,
-                            imageURL = "~/images/chocolate-bar.png",
+                            imageURL = "/images/chocolate-bar.png",
                             snackTypeName = "Candy"
                         });
                 });
@@ -423,81 +426,6 @@ namespace Nosh.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Nosh.Models.VendingMachineSnack", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("snackId");
-
-                    b.Property<int>("vendingMachineId");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("snackId");
-
-                    b.HasIndex("vendingMachineId");
-
-                    b.ToTable("VendingMachineSnack");
-
-                    b.HasData(
-                        new
-                        {
-                            id = 1,
-                            snackId = 1,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 2,
-                            snackId = 2,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 3,
-                            snackId = 3,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 4,
-                            snackId = 4,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 5,
-                            snackId = 5,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 6,
-                            snackId = 6,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 7,
-                            snackId = 7,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 8,
-                            snackId = 8,
-                            vendingMachineId = 1
-                        },
-                        new
-                        {
-                            id = 9,
-                            snackId = 9,
-                            vendingMachineId = 2
-                        });
-                });
-
             modelBuilder.Entity("Nosh.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -515,17 +443,17 @@ namespace Nosh.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fed45c47-4a73-4aa0-9291-a82870675f7a",
+                            Id = "ec255e6d-84f2-422a-a483-b577cd2e8298",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f2a9578-064c-42a3-94cf-13e9411ae340",
+                            ConcurrencyStamp = "44fbd1ff-2bdc-43a3-aafe-6ccb1453e9ec",
                             Email = "hmetts@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "HMETTS@GMAIL.COM",
                             NormalizedUserName = "HMETTS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAEq62pwGmvWLbTPde+4nlk54ZLFKG3mLsZfdQEf6vyOdx8nJEanyEG3nPYsZY7FYA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBiohN0v+yZ74JZe3YiqJyL1C3HSlyhbYJr7PCYzD5RGbmwkqYL907/Gwb1jrM/Lig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b69436cf-a0f8-4639-8b33-e6a2ab4075df",
+                            SecurityStamp = "814a78fc-de85-42e0-948a-d1eb078382fb",
                             TwoFactorEnabled = false,
                             UserName = "hmetts@gmail.com",
                             firstName = "Hunter",
@@ -534,17 +462,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "540c9a17-cd14-41d2-91fa-936ed5863fbc",
+                            Id = "5df331d2-d794-4370-a88f-ed2abe6e43fb",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "20de5860-b274-44d2-ab03-4c9c45479584",
+                            ConcurrencyStamp = "40872b0f-0a72-4711-ab97-d200f895a8f9",
                             Email = "jrosas@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JROSAS@GMAIL.COM",
                             NormalizedUserName = "JROSAS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENjKxDNmbEpbG3eXIXBzymRLRJC9TEEZBjOenMv2KERLlO3eKNbVFSoBoNcA9NhFbg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELP1J4IOPA6RVt3c3Ov+tXJB/97cqvG2MJZTBcychUeIFpbxVIDXX9tvnK80oRybuQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eaab7094-3681-4551-842e-33e956bf9881",
+                            SecurityStamp = "e2efd3c4-c7ec-4abd-893b-db793279e58e",
                             TwoFactorEnabled = false,
                             UserName = "jrosas@gmail.com",
                             firstName = "Jordan",
@@ -553,17 +481,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "ddcc038f-bbce-4b41-86b8-cac01ed620d2",
+                            Id = "9d5ee710-a38a-4f9e-a9dd-4838705922a2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db35e45a-608a-4539-b702-cf9b88876184",
+                            ConcurrencyStamp = "eab510da-877e-47f4-8e5c-8c9fbdf41948",
                             Email = "acarter@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACARTER@GMAIL.COM",
                             NormalizedUserName = "ACARTER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPT2hVNMDTwIT4zgNtD+Z5mTjg5Wulo1jjjYFtqX4ykrCYgjgC6+gEbOIXHqUMi9TA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKimWlYPGZAXRHYo4HvlnI8LvFI1Bpw4oWIb2GfSijD2EbnPxxVEi5lbFQhDUzsx/g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "330ffd08-97c4-4c5b-822f-c39229616f65",
+                            SecurityStamp = "647d88cc-cfb8-4721-80de-4099bccdb06c",
                             TwoFactorEnabled = false,
                             UserName = "acarter@gmail.com",
                             firstName = "Asia",
@@ -572,17 +500,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "dc304167-0949-460d-88ea-927d8feed82f",
+                            Id = "937e5e51-8e25-404a-b0e7-4b82170d7bc3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b637f69c-2699-4f49-870c-53ef717d0071",
+                            ConcurrencyStamp = "05b34245-8c90-4869-918c-fdfe9e58704f",
                             Email = "sbrader@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SBRADER@GMAIL.COM",
                             NormalizedUserName = "SBRADER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGwmVbL1shDLHKfXQCun4IAtSIVdkIWvt/3ELliWU2NwuMcqKFQv5JGfD9MQYCP35Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKBfCtj/yEEZGRZwq5kX+Dzj1XN4UeN7t1iqkClwNCevp5i25Ky1ghsAL2zK+imjqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fcb2bb3a-bf23-40a3-b979-6cb9e28ca124",
+                            SecurityStamp = "e55019f0-b1eb-4f09-9291-906a353db20e",
                             TwoFactorEnabled = false,
                             UserName = "sbrader@gmail.com",
                             firstName = "Steven",
@@ -639,14 +567,21 @@ namespace Nosh.Migrations
             modelBuilder.Entity("Nosh.Models.Snack", b =>
                 {
                     b.HasOne("Nosh.Models.SnackType", "snackType")
-                        .WithMany("Snacks")
-                        .HasForeignKey("snackTypeId")
+                        .WithMany()
+                        .HasForeignKey("SnackTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Nosh.Models.VendingMachine", "vendingMachine")
-                        .WithMany()
+                        .WithMany("Snack")
                         .HasForeignKey("vendingMachineId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Nosh.Models.SnackType", b =>
+                {
+                    b.HasOne("Nosh.Models.Snack")
+                        .WithMany("SnackType")
+                        .HasForeignKey("Snackid");
                 });
 
             modelBuilder.Entity("Nosh.Models.UserSnack", b =>
@@ -659,19 +594,6 @@ namespace Nosh.Migrations
                     b.HasOne("Nosh.Models.User", "user")
                         .WithMany("UserSnack")
                         .HasForeignKey("userId1");
-                });
-
-            modelBuilder.Entity("Nosh.Models.VendingMachineSnack", b =>
-                {
-                    b.HasOne("Nosh.Models.Snack", "snack")
-                        .WithMany("VendingMachineSnack")
-                        .HasForeignKey("snackId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Nosh.Models.VendingMachine", "VendingMachine")
-                        .WithMany("VendingMachineSnack")
-                        .HasForeignKey("vendingMachineId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

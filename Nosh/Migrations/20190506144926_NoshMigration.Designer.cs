@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nosh.Data;
 
 namespace Nosh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190506144926_NoshMigration")]
+    partial class NoshMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,7 +199,8 @@ namespace Nosh.Migrations
 
                     b.Property<int>("SnackTypeId");
 
-                    b.Property<int>("snackCalories");
+                    b.Property<int>("snackCalories")
+                        .HasMaxLength(4);
 
                     b.Property<string>("snackName")
                         .IsRequired()
@@ -441,17 +444,17 @@ namespace Nosh.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ec255e6d-84f2-422a-a483-b577cd2e8298",
+                            Id = "44450521-c8ba-4a08-9700-0bb092c54d3f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "44fbd1ff-2bdc-43a3-aafe-6ccb1453e9ec",
+                            ConcurrencyStamp = "c26790b9-c258-4551-a57d-e08908476922",
                             Email = "hmetts@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "HMETTS@GMAIL.COM",
                             NormalizedUserName = "HMETTS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBiohN0v+yZ74JZe3YiqJyL1C3HSlyhbYJr7PCYzD5RGbmwkqYL907/Gwb1jrM/Lig==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFYTc1UX6b2tPXKrJfWf6Ra5LRCXizf8FPhVV7Lt/U6xU3fEPrLbfGnAmUsfTrdw9w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "814a78fc-de85-42e0-948a-d1eb078382fb",
+                            SecurityStamp = "01f36f76-b5fe-4103-a319-a4b6adf0b2b5",
                             TwoFactorEnabled = false,
                             UserName = "hmetts@gmail.com",
                             firstName = "Hunter",
@@ -460,17 +463,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "5df331d2-d794-4370-a88f-ed2abe6e43fb",
+                            Id = "e17cdf4b-25c2-4a3f-8254-7f7227c8c317",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "40872b0f-0a72-4711-ab97-d200f895a8f9",
+                            ConcurrencyStamp = "fa251e76-16a7-466b-a489-ab7510bccb58",
                             Email = "jrosas@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JROSAS@GMAIL.COM",
                             NormalizedUserName = "JROSAS@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELP1J4IOPA6RVt3c3Ov+tXJB/97cqvG2MJZTBcychUeIFpbxVIDXX9tvnK80oRybuQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGPBqeybWfdCxHZJWGlb09X1ZF9+VzQvGp66QmebOAlrUw+JilOjn6DRFbKNvm/CeA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e2efd3c4-c7ec-4abd-893b-db793279e58e",
+                            SecurityStamp = "b54cea3f-8604-43f5-9809-3dc6c69a990f",
                             TwoFactorEnabled = false,
                             UserName = "jrosas@gmail.com",
                             firstName = "Jordan",
@@ -479,17 +482,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "9d5ee710-a38a-4f9e-a9dd-4838705922a2",
+                            Id = "95a0e8fa-cd84-4f0b-9f2d-b02d16763df4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eab510da-877e-47f4-8e5c-8c9fbdf41948",
+                            ConcurrencyStamp = "ffba7256-3ac9-4172-9bec-41b32da15c20",
                             Email = "acarter@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACARTER@GMAIL.COM",
                             NormalizedUserName = "ACARTER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKimWlYPGZAXRHYo4HvlnI8LvFI1Bpw4oWIb2GfSijD2EbnPxxVEi5lbFQhDUzsx/g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKSZGdrcHytPKudzZbnYg03KtLTVcbUdxcuYmXySfx7YAoOsjsiXm0Zwve1bSwK+Fw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "647d88cc-cfb8-4721-80de-4099bccdb06c",
+                            SecurityStamp = "4e74e2af-3d6b-4364-8210-1ae7c7bdad32",
                             TwoFactorEnabled = false,
                             UserName = "acarter@gmail.com",
                             firstName = "Asia",
@@ -498,17 +501,17 @@ namespace Nosh.Migrations
                         },
                         new
                         {
-                            Id = "937e5e51-8e25-404a-b0e7-4b82170d7bc3",
+                            Id = "c825360f-b2ae-4aee-8ec4-22a48e2bee9c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "05b34245-8c90-4869-918c-fdfe9e58704f",
+                            ConcurrencyStamp = "d0b5b8d1-7c0d-4cac-bf8b-b8bb8fc47a21",
                             Email = "sbrader@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SBRADER@GMAIL.COM",
                             NormalizedUserName = "SBRADER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKBfCtj/yEEZGRZwq5kX+Dzj1XN4UeN7t1iqkClwNCevp5i25Ky1ghsAL2zK+imjqA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECzygvnfKnt3hReXHbiaQ/dmnCEncTQIOL+POja/sA54PX33+hO9DpKBQBZ4iug6Ww==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e55019f0-b1eb-4f09-9291-906a353db20e",
+                            SecurityStamp = "00cfe3ef-b473-45b3-b92e-c2f8c69ebbd6",
                             TwoFactorEnabled = false,
                             UserName = "sbrader@gmail.com",
                             firstName = "Steven",

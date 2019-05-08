@@ -15,7 +15,7 @@ namespace Nosh.Data
         public DbSet<Snack> Snack { get; set; }
         public DbSet<VendingMachine> VendingMachine { get; set; }
         public DbSet<UserSnack> UserSnack { get; set; }
-        public DbSet<VendingMachineSnack> VendingMachineSnack { get; set; }
+        public DbSet<SnackType> SnackType { get; set; }
 
 
 
@@ -25,8 +25,8 @@ namespace Nosh.Data
 
             // Restrict deletion of related order when OrderProducts entry is removed
             modelBuilder.Entity<VendingMachine>()
-                .HasMany(v => v.VendingMachineSnack)
-                .WithOne(l => l.VendingMachine)
+                .HasMany(v => v.Snack)
+                .WithOne(l => l.vendingMachine)
                 .OnDelete(DeleteBehavior.Restrict);
 
 
@@ -112,10 +112,10 @@ namespace Nosh.Data
                 new Snack()
                 {
                     id = 1,
-                    snackName = "REECE's Peanut Butter Cups",
+                    snackName = "Reese's Peanut Butter Cups",
                     snackPrice = 1.00,
                     snackCalories = 210,
-                    snackTypeId = 3,
+                    SnackTypeId = 3,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -124,7 +124,7 @@ namespace Nosh.Data
                     snackName = "Coke",
                     snackPrice = 1.00,
                     snackCalories = 140,
-                    snackTypeId = 1,
+                    SnackTypeId = 1,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -133,7 +133,7 @@ namespace Nosh.Data
                     snackName = "Lays Original",
                     snackPrice = .75,
                     snackCalories = 160,
-                    snackTypeId = 2,
+                    SnackTypeId = 2,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -142,7 +142,7 @@ namespace Nosh.Data
                     snackName = "Iced Coffee",
                     snackPrice = 3.00,
                     snackCalories = 240,
-                    snackTypeId = 1,
+                    SnackTypeId = 1,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -151,7 +151,7 @@ namespace Nosh.Data
                     snackName = "Lays BBQ",
                     snackPrice = .75,
                     snackCalories = 160,
-                    snackTypeId = 2,
+                    SnackTypeId = 2,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -160,7 +160,7 @@ namespace Nosh.Data
                     snackName = "Snickers",
                     snackPrice = 1.00,
                     snackCalories = 215,
-                    snackTypeId = 3,
+                    SnackTypeId = 3,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -169,9 +169,8 @@ namespace Nosh.Data
                     snackName = "Dr. Pepper",
                     snackPrice = 1.00,
                     snackCalories = 150,
-                    vendingMachineId = 1,
-                    snackTypeId = 1
-
+                    SnackTypeId = 1,
+                    vendingMachineId = 1
                 },
                 new Snack()
                 {
@@ -179,7 +178,7 @@ namespace Nosh.Data
                     snackName = "Doritos Salsa Verde",
                     snackPrice = 1.00,
                     snackCalories = 150,
-                    snackTypeId = 2,
+                    SnackTypeId = 2,
                     vendingMachineId = 1
                 },
                 new Snack()
@@ -188,7 +187,7 @@ namespace Nosh.Data
                     snackName = "Red Bull",
                     snackPrice = 2.50,
                     snackCalories = 168,
-                    snackTypeId = 1,
+                    SnackTypeId = 1,
                     vendingMachineId = 2
                 }
                 );
@@ -215,19 +214,19 @@ namespace Nosh.Data
                 {
                     SnackTypeId = 1,
                     snackTypeName = "Drink",
-                    imageURL = "~/images/milk-bottle.png"
+                    imageURL = "/images/milk-bottle.png"
                 },
                 new SnackType()
                 {
                     SnackTypeId = 2,
                     snackTypeName = "Chip",
-                    imageURL ="~/images/snack.png"
+                    imageURL ="/images/snack.png"
                 },
                 new SnackType()
                 {
                     SnackTypeId = 3,
                     snackTypeName = "Candy",
-                    imageURL = "~/images/chocolate-bar.png"
+                    imageURL = "/images/chocolate-bar.png"
                 }
             );
 
@@ -262,73 +261,6 @@ namespace Nosh.Data
                     id = 5,
                     userId = 3,
                     snackId = 7
-                }
-            );
-
-
-            //Adding vending machine snacks to the DB
-            modelBuilder.Entity<VendingMachineSnack>().HasData(
-                new VendingMachineSnack()
-                {
-                    id = 1,
-                    vendingMachineId = 1,
-                    snackId = 1
-                    
-                },
-                new VendingMachineSnack()
-                {
-                    id = 2,
-                    vendingMachineId = 1,
-                    snackId = 2
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 3,
-                    vendingMachineId = 1,
-                    snackId = 3
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 4,
-                    vendingMachineId = 1,
-                    snackId = 4
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 5,
-                    vendingMachineId = 1,
-                    snackId = 5
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 6,
-                    vendingMachineId = 1,
-                    snackId = 6
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 7,
-                    vendingMachineId = 1,
-                    snackId = 7
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 8,
-                    vendingMachineId = 1,
-                    snackId = 8
-
-                },
-                new VendingMachineSnack()
-                {
-                    id = 9,
-                    vendingMachineId = 2,
-                    snackId = 9
                 }
             );
         }

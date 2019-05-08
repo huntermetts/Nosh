@@ -12,12 +12,14 @@ namespace Nosh.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Vending Machine Name")]
         public string vendingMachineName { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Vending Machine Location")]
         public string vendingMachineLocation { get; set; }
 
-        public virtual ICollection<VendingMachineSnack> VendingMachineSnack { get; set; }
+        public virtual ICollection<Snack> Snack { get; set; }
     }
 }

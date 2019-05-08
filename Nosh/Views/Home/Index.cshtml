@@ -10,7 +10,7 @@
 {
     <div class="contentLanding">
         <div class="text-center">
-            <h4 class="textLanding">Welcome @User.Identity.Name!<br />The choice is yours!</h4>
+            <h4 class="textLanding">Welcome <strong>@User.Identity.Name</strong>!<br />The choice is yours!</h4>
 
         </div>
 
@@ -24,7 +24,7 @@
             <p class="orButton">or</p>
 
             <button type="button" class="btn btn-dark vendingButton">
-                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Vending Machines</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="VendingMachines" asp-action="Index">Vending Machines</a>
             </button>
         </div>
 

@@ -52,20 +52,6 @@ namespace Nosh.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SnackType",
-                columns: table => new
-                {
-                    SnackTypeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    snackTypeName = table.Column<string>(nullable: true),
-                    imageURL = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SnackType", x => x.SnackTypeId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "VendingMachine",
                 columns: table => new
                 {
@@ -186,35 +172,6 @@ namespace Nosh.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Snack",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    snackName = table.Column<string>(maxLength: 50, nullable: false),
-                    snackPrice = table.Column<double>(nullable: false),
-                    snackCalories = table.Column<int>(maxLength: 4, nullable: false),
-                    vendingMachineId = table.Column<int>(nullable: false),
-                    snackTypeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Snack", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Snack_SnackType_snackTypeId",
-                        column: x => x.snackTypeId,
-                        principalTable: "SnackType",
-                        principalColumn: "SnackTypeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Snack_VendingMachine_vendingMachineId",
-                        column: x => x.vendingMachineId,
-                        principalTable: "VendingMachine",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserSnack",
                 columns: table => new
                 {
@@ -228,12 +185,6 @@ namespace Nosh.Migrations
                 {
                     table.PrimaryKey("PK_UserSnack", x => x.id);
                     table.ForeignKey(
-                        name: "FK_UserSnack_Snack_snackId",
-                        column: x => x.snackId,
-                        principalTable: "Snack",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_UserSnack_AspNetUsers_userId1",
                         column: x => x.userId1,
                         principalTable: "AspNetUsers",
@@ -242,25 +193,43 @@ namespace Nosh.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VendingMachineSnack",
+                name: "SnackType",
+                columns: table => new
+                {
+                    SnackTypeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    snackTypeName = table.Column<string>(nullable: true),
+                    imageURL = table.Column<string>(nullable: true),
+                    Snackid = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SnackType", x => x.SnackTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Snack",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    snackId = table.Column<int>(nullable: false),
+                    snackName = table.Column<string>(maxLength: 50, nullable: false),
+                    snackPrice = table.Column<double>(nullable: false),
+                    snackCalories = table.Column<int>(maxLength: 4, nullable: false),
+                    SnackTypeId = table.Column<int>(nullable: false),
                     vendingMachineId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VendingMachineSnack", x => x.id);
+                    table.PrimaryKey("PK_Snack", x => x.id);
                     table.ForeignKey(
-                        name: "FK_VendingMachineSnack_Snack_snackId",
-                        column: x => x.snackId,
-                        principalTable: "Snack",
-                        principalColumn: "id",
+                        name: "FK_Snack_SnackType_SnackTypeId",
+                        column: x => x.SnackTypeId,
+                        principalTable: "SnackType",
+                        principalColumn: "SnackTypeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VendingMachineSnack_VendingMachine_vendingMachineId",
+                        name: "FK_Snack_VendingMachine_vendingMachineId",
                         column: x => x.vendingMachineId,
                         principalTable: "VendingMachine",
                         principalColumn: "id",
@@ -272,20 +241,20 @@ namespace Nosh.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "firstName", "isVendor", "lastName" },
                 values: new object[,]
                 {
-                    { "fed45c47-4a73-4aa0-9291-a82870675f7a", 0, "8f2a9578-064c-42a3-94cf-13e9411ae340", "User", "hmetts@gmail.com", true, false, null, "HMETTS@GMAIL.COM", "HMETTS@GMAIL.COM", "AQAAAAEAACcQAAAAEAEq62pwGmvWLbTPde+4nlk54ZLFKG3mLsZfdQEf6vyOdx8nJEanyEG3nPYsZY7FYA==", null, false, "b69436cf-a0f8-4639-8b33-e6a2ab4075df", false, "hmetts@gmail.com", "Hunter", false, "Metts" },
-                    { "540c9a17-cd14-41d2-91fa-936ed5863fbc", 0, "20de5860-b274-44d2-ab03-4c9c45479584", "User", "jrosas@gmail.com", true, false, null, "JROSAS@GMAIL.COM", "JROSAS@GMAIL.COM", "AQAAAAEAACcQAAAAENjKxDNmbEpbG3eXIXBzymRLRJC9TEEZBjOenMv2KERLlO3eKNbVFSoBoNcA9NhFbg==", null, false, "eaab7094-3681-4551-842e-33e956bf9881", false, "jrosas@gmail.com", "Jordan", false, "Rosas" },
-                    { "ddcc038f-bbce-4b41-86b8-cac01ed620d2", 0, "db35e45a-608a-4539-b702-cf9b88876184", "User", "acarter@gmail.com", true, false, null, "ACARTER@GMAIL.COM", "ACARTER@GMAIL.COM", "AQAAAAEAACcQAAAAEPT2hVNMDTwIT4zgNtD+Z5mTjg5Wulo1jjjYFtqX4ykrCYgjgC6+gEbOIXHqUMi9TA==", null, false, "330ffd08-97c4-4c5b-822f-c39229616f65", false, "acarter@gmail.com", "Asia", false, "Carter" },
-                    { "dc304167-0949-460d-88ea-927d8feed82f", 0, "b637f69c-2699-4f49-870c-53ef717d0071", "User", "sbrader@gmail.com", true, false, null, "SBRADER@GMAIL.COM", "SBRADER@GMAIL.COM", "AQAAAAEAACcQAAAAEGwmVbL1shDLHKfXQCun4IAtSIVdkIWvt/3ELliWU2NwuMcqKFQv5JGfD9MQYCP35Q==", null, false, "fcb2bb3a-bf23-40a3-b979-6cb9e28ca124", false, "sbrader@gmail.com", "Steven", true, "Brader" }
+                    { "44450521-c8ba-4a08-9700-0bb092c54d3f", 0, "c26790b9-c258-4551-a57d-e08908476922", "User", "hmetts@gmail.com", true, false, null, "HMETTS@GMAIL.COM", "HMETTS@GMAIL.COM", "AQAAAAEAACcQAAAAEFYTc1UX6b2tPXKrJfWf6Ra5LRCXizf8FPhVV7Lt/U6xU3fEPrLbfGnAmUsfTrdw9w==", null, false, "01f36f76-b5fe-4103-a319-a4b6adf0b2b5", false, "hmetts@gmail.com", "Hunter", false, "Metts" },
+                    { "e17cdf4b-25c2-4a3f-8254-7f7227c8c317", 0, "fa251e76-16a7-466b-a489-ab7510bccb58", "User", "jrosas@gmail.com", true, false, null, "JROSAS@GMAIL.COM", "JROSAS@GMAIL.COM", "AQAAAAEAACcQAAAAEGPBqeybWfdCxHZJWGlb09X1ZF9+VzQvGp66QmebOAlrUw+JilOjn6DRFbKNvm/CeA==", null, false, "b54cea3f-8604-43f5-9809-3dc6c69a990f", false, "jrosas@gmail.com", "Jordan", false, "Rosas" },
+                    { "95a0e8fa-cd84-4f0b-9f2d-b02d16763df4", 0, "ffba7256-3ac9-4172-9bec-41b32da15c20", "User", "acarter@gmail.com", true, false, null, "ACARTER@GMAIL.COM", "ACARTER@GMAIL.COM", "AQAAAAEAACcQAAAAEKSZGdrcHytPKudzZbnYg03KtLTVcbUdxcuYmXySfx7YAoOsjsiXm0Zwve1bSwK+Fw==", null, false, "4e74e2af-3d6b-4364-8210-1ae7c7bdad32", false, "acarter@gmail.com", "Asia", false, "Carter" },
+                    { "c825360f-b2ae-4aee-8ec4-22a48e2bee9c", 0, "d0b5b8d1-7c0d-4cac-bf8b-b8bb8fc47a21", "User", "sbrader@gmail.com", true, false, null, "SBRADER@GMAIL.COM", "SBRADER@GMAIL.COM", "AQAAAAEAACcQAAAAECzygvnfKnt3hReXHbiaQ/dmnCEncTQIOL+POja/sA54PX33+hO9DpKBQBZ4iug6Ww==", null, false, "00cfe3ef-b473-45b3-b92e-c2f8c69ebbd6", false, "sbrader@gmail.com", "Steven", true, "Brader" }
                 });
 
             migrationBuilder.InsertData(
                 table: "SnackType",
-                columns: new[] { "SnackTypeId", "imageURL", "snackTypeName" },
+                columns: new[] { "SnackTypeId", "Snackid", "imageURL", "snackTypeName" },
                 values: new object[,]
                 {
-                    { 1, "~/images/milk-bottle.png", "Drink" },
-                    { 2, "~/images/snack.png", "Chip" },
-                    { 3, "~/images/chocolate-bar.png", "Candy" }
+                    { 1, null, "/images/milk-bottle.png", "Drink" },
+                    { 2, null, "/images/snack.png", "Chip" },
+                    { 3, null, "/images/chocolate-bar.png", "Candy" }
                 });
 
             migrationBuilder.InsertData(
@@ -299,18 +268,18 @@ namespace Nosh.Migrations
 
             migrationBuilder.InsertData(
                 table: "Snack",
-                columns: new[] { "id", "snackCalories", "snackName", "snackPrice", "snackTypeId", "vendingMachineId" },
+                columns: new[] { "id", "SnackTypeId", "snackCalories", "snackName", "snackPrice", "vendingMachineId" },
                 values: new object[,]
                 {
-                    { 9, 168, "Red Bull", 2.5, 1, 2 },
-                    { 1, 210, "REECE's Peanut Butter Cups", 1.0, 3, 1 },
-                    { 2, 140, "Coke", 1.0, 1, 1 },
-                    { 3, 160, "Lays Original", 0.75, 2, 1 },
-                    { 4, 240, "Iced Coffee", 3.0, 1, 1 },
-                    { 5, 160, "Lays BBQ", 0.75, 2, 1 },
-                    { 6, 215, "Snickers", 1.0, 3, 1 },
-                    { 7, 150, "Dr. Pepper", 1.0, 1, 1 },
-                    { 8, 150, "Doritos Salsa Verde", 1.0, 2, 1 }
+                    { 9, 1, 168, "Red Bull", 2.5, 2 },
+                    { 1, 3, 210, "Reese's Peanut Butter Cups", 1.0, 1 },
+                    { 2, 1, 140, "Coke", 1.0, 1 },
+                    { 3, 2, 160, "Lays Original", 0.75, 1 },
+                    { 4, 1, 240, "Iced Coffee", 3.0, 1 },
+                    { 5, 2, 160, "Lays BBQ", 0.75, 1 },
+                    { 6, 3, 215, "Snickers", 1.0, 1 },
+                    { 7, 1, 150, "Dr. Pepper", 1.0, 1 },
+                    { 8, 2, 150, "Doritos Salsa Verde", 1.0, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -323,22 +292,6 @@ namespace Nosh.Migrations
                     { 2, 7, 1, null },
                     { 5, 7, 3, null },
                     { 1, 8, 1, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "VendingMachineSnack",
-                columns: new[] { "id", "snackId", "vendingMachineId" },
-                values: new object[,]
-                {
-                    { 9, 9, 2 },
-                    { 1, 1, 1 },
-                    { 2, 2, 1 },
-                    { 3, 3, 1 },
-                    { 4, 4, 1 },
-                    { 5, 5, 1 },
-                    { 6, 6, 1 },
-                    { 7, 7, 1 },
-                    { 8, 8, 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -381,14 +334,19 @@ namespace Nosh.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Snack_snackTypeId",
+                name: "IX_Snack_SnackTypeId",
                 table: "Snack",
-                column: "snackTypeId");
+                column: "SnackTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Snack_vendingMachineId",
                 table: "Snack",
                 column: "vendingMachineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SnackType_Snackid",
+                table: "SnackType",
+                column: "Snackid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserSnack_snackId",
@@ -400,19 +358,29 @@ namespace Nosh.Migrations
                 table: "UserSnack",
                 column: "userId1");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_VendingMachineSnack_snackId",
-                table: "VendingMachineSnack",
-                column: "snackId");
+            migrationBuilder.AddForeignKey(
+                name: "FK_UserSnack_Snack_snackId",
+                table: "UserSnack",
+                column: "snackId",
+                principalTable: "Snack",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_VendingMachineSnack_vendingMachineId",
-                table: "VendingMachineSnack",
-                column: "vendingMachineId");
+            migrationBuilder.AddForeignKey(
+                name: "FK_SnackType_Snack_Snackid",
+                table: "SnackType",
+                column: "Snackid",
+                principalTable: "Snack",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Snack_SnackType_SnackTypeId",
+                table: "Snack");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -432,19 +400,16 @@ namespace Nosh.Migrations
                 name: "UserSnack");
 
             migrationBuilder.DropTable(
-                name: "VendingMachineSnack");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Snack");
+                name: "SnackType");
 
             migrationBuilder.DropTable(
-                name: "SnackType");
+                name: "Snack");
 
             migrationBuilder.DropTable(
                 name: "VendingMachine");

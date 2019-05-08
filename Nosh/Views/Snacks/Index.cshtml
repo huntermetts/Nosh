@@ -7,6 +7,13 @@
 
 <h1 class="headerSnacks"><strong>Nashville Software School's</strong> vending options:</h1>
 
+<form asp-controller="Movies" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <div class="cardHolder">
     
         @foreach (var item in Model)

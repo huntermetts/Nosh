@@ -1,20 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact Us.";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Feel free to get in touch with us below.</p>
+<p class="contactParagraph">Running low on your favorite snack? <br />Feel free to get in touch with us below.</p><hr />
 
 <div class="form-group">
-    <label>First Name: </label>
-    <input class="form-control"> </input>
+    <div class="inputSpacing">
+        <label>First Name: </label>
+        <input class="form-control formLength" placeholder="Katie"></input>
+    </div>
 
-    <label>Last Name: </label>
-    <input class="form-control"> </input>
+    <div class="inputSpacing">
+        <label>Last Name: </label>
+        <input class="form-control formLength" placeholder="Allen"></input>
+    </div>
 
-    <label>Email: </label>
-    <input class="form-control"> </input>
+    <div class="inputSpacing">
+        <label>Email: </label>
+        <input class="form-control formLength" placeholder="KatieA@someEmail.com"></input>
+    </div>
 
-    <label>Message: </label>
-    <textarea class="form-control"> </textarea>
+    <div class="inputSpacing">
+        <label>Message: </label>
+        <textarea class="form-control textLength" placeholder="Drop a message here to let us know how we can help."></textarea>
+    </div>
 </div>
+
+<button type="button" class="btn btn-dark bottomButton">
+    <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Submit</a>
+</button>

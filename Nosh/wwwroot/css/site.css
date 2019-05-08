@@ -60,14 +60,30 @@ body{
     color: white;
 }
 
-    .snackText:hover {
-        text-decoration: none;
-        color: white;
-    }
+.snackText:hover {
+    text-decoration: none;
+    color: white;
+}
 
-.snackButtonCenter{
-    display:flex;
-    justify-content:center;
+.contactParagraph{
+    line-height:30px;
+}
+
+.formLength{
+    max-width:30%;
+}
+
+.textLength {
+    max-width: 50%;
+}
+
+.inputSpacing{
+    padding-bottom:20px;
+}
+
+.snackButtonCenter {
+    display: flex;
+    justify-content: center;
 }
 
 .cardText {
