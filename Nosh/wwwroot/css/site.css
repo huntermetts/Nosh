@@ -132,6 +132,11 @@ body{
     margin-top: -40px
 }
 
+
+.sendMessageButton{
+margin-top:10px;
+}
+
 .logoHeader {
     font-family: 'Playfair Display', serif;
     font-size: 40px;

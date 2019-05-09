@@ -16,17 +16,20 @@
         <input class="form-control formLength" placeholder="Allen"></input>
     </div>
 
-    <div class="inputSpacing">
-        <label>Email: </label>
-        <input class="form-control formLength" placeholder="KatieA@someEmail.com"></input>
-    </div>
+<div class="inputSpacing">
+    <form method="POST" action="https://formspree.io/huntermettsdev@gmail.com">
+        <label>Your Email: </label>
+        <input type="email" class="form-control formLength" name="email" placeholder="kAllen@someEmail.com ">
 
-    <div class="inputSpacing">
         <label>Message: </label>
-        <textarea class="form-control textLength" placeholder="Drop a message here to let us know how we can help."></textarea>
-    </div>
+        <textarea name="message"  class="form-control formLength" placeholder="Drop a message here to let us know how we can help."></textarea>
+        <button type="submit" class="btn btn-dark sendMessageButton">Send</button>
+    </form>
+</div>
+  
 </div>
 
-<button type="button" class="btn btn-dark bottomButton">
-    <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Submit</a>
-</button>
+
+    @*<button type="button" class="btn btn-dark bottomButton">
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Submit</a>
+    </button>*@

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Nosh.Models.VendingMachine>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@model IEnumerable<Nosh.Models.VendingMachine>
 
 @{
     ViewData["Title"] = "Vending Machines";
@@ -44,3 +47,7 @@
     </button>
 </div>
 
+@*@if (SignInManager.IsSignedIn(User.IsVendor == true))
+{
+
+}*@
