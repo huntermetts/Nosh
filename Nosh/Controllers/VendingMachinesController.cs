@@ -22,7 +22,9 @@ namespace Nosh.Controllers
         // GET: VendingMachines
         public async Task<IActionResult> Index()
         {
-            return View(await _context.VendingMachine.ToListAsync());
+            return View(await _context.VendingMachine
+                //.Include(v => v.User)
+                .ToListAsync());
         }
 
         // GET: VendingMachines/Details/5

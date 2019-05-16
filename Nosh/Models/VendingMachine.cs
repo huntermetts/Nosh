@@ -21,5 +21,7 @@ namespace Nosh.Models
         public string vendingMachineLocation { get; set; }
 
         public virtual ICollection<Snack> Snack { get; set; }
+
+        //public virtual ICollection<User> User { get; set; }
     }
 }
